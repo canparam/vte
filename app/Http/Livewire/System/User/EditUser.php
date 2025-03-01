@@ -4,11 +4,13 @@ namespace App\Http\Livewire\System\User;
 
 use App\Models\User;
 use App\Traits\ToastifyTrait;
+use Artesaos\SEOTools\Traits\SEOTools;
 use Livewire\Component;
 
 class EditUser extends Component
 {
     use ToastifyTrait;
+    use SEOTools;
     public $data = [];
     public $user;
 
@@ -21,6 +23,8 @@ class EditUser extends Component
 
     public function render()
     {
+        $this->seo()->setTitle("Sửa thành thành viên " . $this->user->name);
+
         return view('livewire.admin.system.user.edit');
     }
 

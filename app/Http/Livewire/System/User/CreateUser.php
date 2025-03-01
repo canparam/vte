@@ -5,11 +5,14 @@ namespace App\Http\Livewire\System\User;
 use App\Models\User;
 use App\Services\UserService;
 use App\Traits\ToastifyTrait;
+use Artesaos\SEOTools\Traits\SEOTools;
 use Livewire\Component;
 
 class CreateUser extends Component
 {
     use ToastifyTrait;
+    use SEOTools;
+
     public $data = [
         'name' => '',
         'email' => '',
@@ -19,6 +22,7 @@ class CreateUser extends Component
 
     public function render()
     {
+        $this->seo()->setTitle("Thêm mới thành viên");
         return view('livewire.admin.system.user.create');
     }
 
