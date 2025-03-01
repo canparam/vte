@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\AdminIndex;
 use App\Http\Livewire\Auth\Login;
+use App\Http\Livewire\System\Setting;
 use App\Http\Livewire\System\User;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,7 @@ Route::prefix('admin')->group(function () {
             Route::get('users/create',User\CreateUser::class)->name('admin.system.users.create');
             Route::get('users/{id}/edit',User\EditUser::class)->name('admin.system.users.edit');
 
+            Route::get('settings',Setting::class)->name('admin.system.settings');
 
         });
     });

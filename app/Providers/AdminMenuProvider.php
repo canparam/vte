@@ -32,11 +32,14 @@ class AdminMenuProvider extends ServiceProvider
                     'admin.system.users.edit',
                     'admin.system.users.create'
                 ]
+            ])
+            ->addItem('Cài đặt',[
+                'route' => 'admin.system.settings',
+                'icon' => 'fe fe-sliders',
+                'extraRoute' => [
+                    'admin.system.settings',
+                ]
             ]);
-//            ->addItem('Cài đặt',[
-//                'route' => 'admin.settings',
-//                'icon' => 'fe fe-sliders',
-//            ]);
 
     }
 }
