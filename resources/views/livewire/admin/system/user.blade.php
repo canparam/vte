@@ -24,7 +24,7 @@
                                 <div class="col-sm-12 col-md-6">
                                     <div id="basic-datatable_filter" class="dataTables_filter">
                                         <label>
-                                            <input type="search" class="form-control form-control"
+                                            <input type="search" wire:model.debounce.500ms="email" class="form-control form-control"
                                                    placeholder="Search...">
                                         </label>
                                     </div>

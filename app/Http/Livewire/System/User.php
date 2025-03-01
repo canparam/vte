@@ -9,11 +9,12 @@ use Livewire\WithPagination;
 class User extends Component
 {
     use WithPagination;
+    public $email;
     protected $paginationTheme = 'bootstrap';
 
     public function render(UserService $userService)
     {
-        $list = $userService->getList();
+        $list = $userService->getList(trim($this->email));
         return view('livewire.admin.system.user', ['list' => $list]);
     }
 }
