@@ -12,6 +12,8 @@
     <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
     <link href="{{asset('assets/switcher/css/switcher.css')}}" rel="stylesheet">
     <link href="{{asset('assets/switcher/demo.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
     @livewireStyles
 </head>
 
@@ -86,6 +88,28 @@
 <!--{ Custom-switcher }-->
 <!--{ Switcher js }-->
 <script src="{{asset('assets/switcher/js/switcher.js')}}"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script>
+    window.addEventListener('toast',function (e) {
+        Toastify({
+            newWindow: true,
+            text: e.detail.content,
+            gravity: 'top',
+            position: 'right',
+            className: "bg-custom-500",
+            stopOnFocus: true,
+            offset: {
+
+            },
+            duration: 2500,
+            close: true,
+            style: {
+                background: "#3b82f6"
+            },
+        }).showToast();
+    })
+
+</script>
 @livewireScripts
 </body>
 </html>

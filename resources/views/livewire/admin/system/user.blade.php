@@ -17,8 +17,9 @@
                         <div id="basic-datatable_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
-                                    <button type="button" class="btn btn-primary"><i class="fe fe-plus me-2"></i>Thêm
-                                    </button>
+                                    <a  href="{{route('admin.system.users.create')}}" class="btn btn-primary">
+                                        <i class="fe fe-plus me-2"></i>Thêm
+                                    </a>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
                                     <div id="basic-datatable_filter" class="dataTables_filter">
@@ -52,9 +53,10 @@
                                                 <td class="sorting_1">{{$user->getRole()}}</td>
                                                 <td class="sorting_1">
                                                     <div class="btn-list">
-                                                        <button id="bEdit" type="button" class="btn btn-sm btn-primary">
+                                                        <a href="{{route('admin.system.users.edit',['id' => $user->id])}}"
+                                                           class="btn btn-sm btn-primary">
                                                             <span class="fe fe-edit"> </span>
-                                                        </button>
+                                                        </a>
                                                         <button id="bDel" type="button" class="btn  btn-sm btn-danger">
                                                             <span class="fe fe-trash-2"> </span>
                                                         </button>
@@ -70,7 +72,8 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-12">
                                     <div class="dataTables_info" id="basic-datatable_info" role="status"
-                                         aria-live="polite">Hiển thị từ {{$list->firstItem()}} đến {{$list->lastItem()}} trên tổng {{ $list->total() }} bản ghi.
+                                         aria-live="polite">Hiển thị từ {{$list->firstItem()}} đến {{$list->lastItem()}}
+                                        trên tổng {{ $list->total() }} bản ghi.
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-12">

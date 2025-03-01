@@ -21,7 +21,7 @@
                 </li>
                 @foreach($v->getItems() as $label => $value)
                     <li>
-                        <a class="sidenav-menu-item {{request()->route()->getName() == $value['route'] ? 'active' : ''}}"
+                        <a class="sidenav-menu-item {{in_array(request()->route()->getName(),$value['extraRoute'])  ? 'active' : ''}}"
                            data-bs-toggle="slide" href="{{route($value['route'])}}">
                             <i class="side-menu__icon {{@$value['icon']}}"></i>
                             <span class="side-menu__label">{{$label}}</span>

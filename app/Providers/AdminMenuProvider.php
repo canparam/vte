@@ -27,6 +27,11 @@ class AdminMenuProvider extends ServiceProvider
             ->addItem('Thành viên',[
                 'route' => 'admin.system.users',
                 'icon' => 'fe fe-users',
+                'extraRoute' => [
+                    'admin.system.users',
+                    'admin.system.users.edit',
+                    'admin.system.users.create'
+                ]
             ]);
 //            ->addItem('Cài đặt',[
 //                'route' => 'admin.settings',

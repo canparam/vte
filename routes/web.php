@@ -33,7 +33,12 @@ Route::prefix('admin')->group(function () {
     Route::middleware(['auth', 'is_admin'])->group(function () {
         Route::get('/', AdminIndex::class)->name('admin.index');
         Route::prefix('system')->group(function () {
+
             Route::get('users',User::class)->name('admin.system.users');
+            Route::get('users/create',User\CreateUser::class)->name('admin.system.users.create');
+            Route::get('users/{id}/edit',User\EditUser::class)->name('admin.system.users.edit');
+
+
         });
     });
 });

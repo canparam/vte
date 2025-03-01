@@ -15,4 +15,8 @@ class UserService
     {
         return $this->userRepository->orderBy('id', 'DESC')->paginate(20)->withQueryString();
     }
+    public function create($data)
+    {
+        return $this->userRepository->create($data);
+    }
 }
