@@ -5,7 +5,8 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {!! SEO::generate() !!}
-    <link rel="shortcut icon" type="image/x-icon" href="https://dev.techneinfosys.com/html/dashsage/assets/images/brand/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon"
+          href="https://dev.techneinfosys.com/html/dashsage/assets/images/brand/favicon.ico">
     <link id="style" href="{{asset('assets/css/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('/assets/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/plugins.css')}}" rel="stylesheet">
@@ -13,6 +14,8 @@
     <link href="{{asset('assets/switcher/css/switcher.css')}}" rel="stylesheet">
     <link href="{{asset('assets/switcher/demo.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <meta name="csrf_token" content="{{ csrf_token() }}" />
 
     @livewireStyles
 </head>
@@ -90,7 +93,7 @@
 <script src="{{asset('assets/switcher/js/switcher.js')}}"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script>
-    window.addEventListener('toast',function (e) {
+    window.addEventListener('toast', function (e) {
         Toastify({
             newWindow: true,
             text: e.detail.content,
@@ -98,9 +101,7 @@
             position: 'right',
             className: "bg-custom-500",
             stopOnFocus: true,
-            offset: {
-
-            },
+            offset: {},
             duration: 2500,
             close: true,
             style: {
@@ -111,5 +112,7 @@
 
 </script>
 @livewireScripts
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tinymce@5.10.7/tinymce.min.js"></script>
+
 </body>
 </html>

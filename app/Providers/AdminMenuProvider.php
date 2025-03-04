@@ -12,16 +12,23 @@ class AdminMenuProvider extends ServiceProvider
         /** @var MenuFactory $menu */
         $menu = $this->app->get('cnv.menu.factory');
 
-//        $menu->createMenu('Tin tức / Sự kiện')
-//            ->addItem('Danh sách bài viết',[
-//                'route' => 'admin.users',
-//                'icon' => 'fe fe-folder',
-//            ])
-//            ->addItem('Thêm mới',[
-//                'route' => 'admin.users',
-//                'icon' => 'fe fe-plus',
-//            ])
-//            ;
+        $menu->createMenu('Bài viết')
+            ->addItem('Danh sách bài viết',[
+                'route' => 'admin.posts',
+                'icon' => 'fe fe-folder',
+                'extraRoute' => [
+//                    'admin.users'
+                ]
+            ])
+            ->addItem('Thêm mới',[
+                'route' => 'admin.posts.create',
+                'icon' => 'fe fe-plus',
+                'extraRoute' => [
+                    'admin.posts.create',
+                    'admin.posts'
+                ]
+            ])
+            ;
 
         $menu->createMenu('Hệ thống')
             ->addItem('Thành viên',[
