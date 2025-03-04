@@ -26,7 +26,8 @@ class CreatePostsTable extends Migration
             $table->text('short_des')->nullable();
             $table->string('slug',500)->index();
             $table->unsignedBigInteger('user_id')->index()->nullable();
-
+            $table->json('seo')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

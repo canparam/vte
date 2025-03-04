@@ -2,10 +2,15 @@
 
 namespace App\Http\Livewire\Post;
 
+use App\Traits\ToastifyTrait;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CreatePost extends Component
 {
+    use ToastifyTrait;
+    use WithFileUploads;
+
     public $post = [
       'title' => '',
       'content' => '',
@@ -21,6 +26,10 @@ class CreatePost extends Component
     }
     public function create()
     {
-        dd($this->post, $this->seo);
+        $this->validate([
+            'post.title' => 'required',
+            'thumbnail' => 'image',
+        ]);
+        $this->toast("Đăng thành công");
     }
 }
