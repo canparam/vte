@@ -18,7 +18,7 @@ class PostService
         return $this->postRepository->orderBy('id', 'DESC')
             ->scopeQuery(function ($query) use ($title) {
                 if (!empty($title)) {
-                    $query->where('title', $title);
+                    $query->where('title','like', "%$title%");
                 }
                 return $query;
             })

@@ -48,15 +48,15 @@
                                                 <td class="sorting_1">{{$post->id}}</td>
                                                 <td class="sorting_1">{{$post->title}}</td>
                                                 <td class="sorting_1">
-{{--                                                    <div class="btn-list">--}}
-{{--                                                        <a href="{{route('admin.system.users.edit',['id' => $user->id])}}"--}}
-{{--                                                           class="btn btn-sm btn-primary">--}}
-{{--                                                            <span class="fe fe-edit"> </span>--}}
-{{--                                                        </a>--}}
-{{--                                                        <button id="bDel" type="button" class="btn  btn-sm btn-danger">--}}
-{{--                                                            <span class="fe fe-trash-2"> </span>--}}
-{{--                                                        </button>--}}
-{{--                                                    </div>--}}
+                                                    <div class="btn-list">
+                                                        <a href="{{route('admin.posts.edit',['id' => $post->id])}}"
+                                                           class="btn btn-sm btn-primary">
+                                                            <span class="fe fe-edit"> </span>
+                                                        </a>
+                                                        <button id="bDel" type="button" class="btn  btn-sm btn-danger">
+                                                            <span class="fe fe-trash-2"> </span>
+                                                        </button>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
