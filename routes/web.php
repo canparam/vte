@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\UploadController;
 use App\Http\Livewire\AdminIndex;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Post\CreatePost;
+use App\Http\Livewire\PostList;
 use App\Http\Livewire\System\Setting;
 use App\Http\Livewire\System\User;
 use Illuminate\Support\Facades\Route;
@@ -38,20 +39,17 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('posts')->group(function () {
 
-            Route::get('/',User::class)->name('admin.posts');
-            Route::get('posts/create',CreatePost::class)->name('admin.posts.create');
+            Route::get('/',PostList::class)->name('admin.posts');
+            Route::get('/create',CreatePost::class)->name('admin.posts.create');
 //            Route::get('users/{id}/edit',User\EditUser::class)->name('admin.system.users.edit');
 
 
         });
 
-
         Route::prefix('system')->group(function () {
-
             Route::get('users',User::class)->name('admin.system.users');
             Route::get('users/create',User\CreateUser::class)->name('admin.system.users.create');
             Route::get('users/{id}/edit',User\EditUser::class)->name('admin.system.users.edit');
-
             Route::get('settings',Setting::class)->name('admin.system.settings');
 
         });

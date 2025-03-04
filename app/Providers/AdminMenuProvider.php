@@ -17,7 +17,7 @@ class AdminMenuProvider extends ServiceProvider
                 'route' => 'admin.posts',
                 'icon' => 'fe fe-folder',
                 'extraRoute' => [
-//                    'admin.users'
+                    'admin.posts'
                 ]
             ])
             ->addItem('Thêm mới',[
@@ -25,7 +25,6 @@ class AdminMenuProvider extends ServiceProvider
                 'icon' => 'fe fe-plus',
                 'extraRoute' => [
                     'admin.posts.create',
-                    'admin.posts'
                 ]
             ])
             ;
