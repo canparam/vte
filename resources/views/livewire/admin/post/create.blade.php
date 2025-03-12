@@ -13,11 +13,12 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <div class="form-group">
-                            <label class="form-label" for="title">Tiêu đề</label>
-                            <input type="text" wire:model.defer="post.title"
-                                   class="form-control  @error('post.title') is-invalid @enderror" id="title">
-                        </div>
+                        <x-form.text-input label="Tiêu đề" model="title"/>
+{{--                        <div class="form-group">--}}
+{{--                            <label class="form-label" for="title">Tiêu đề</label>--}}
+{{--                            <input type="text" wire:model.defer="post.title"--}}
+{{--                                   class="form-control  @error('post.title') is-invalid @enderror" id="title">--}}
+{{--                        </div>--}}
 
                         <x-tiny-editor label="Nội dung" model="post.content"/>
                         <div class="card border">
@@ -25,12 +26,8 @@
                                 <h5 class="card-title">SEO</h5>
                             </div>
                             <div class="card-body px-0">
-                                <div class="form-group">
-                                    <label class="form-label" for="metaTitle">Meta Title</label>
-                                    <input type="text" wire:model.defer="seo.title" autocomplete="off"
-                                           class="form-control" id="metaTitle"
-                                           aria-describedby="emailHelp" placeholder="Meta Title">
-                                </div>
+                                <x-form.text-input label="Meta Title" model="seoTitle"/>
+
                                 <div class="form-group">
                                     <label class="form-label" for="metaDes">Meta Description</label>
                                     <textarea class="form-control" wire:model.defer="seo.description" autocomplete="off"

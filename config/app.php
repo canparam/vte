@@ -14,6 +14,11 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'languages' => [
+        'vi' => 'Tiếng việt',
+        'en' => 'Tiếng anh'
+    ],
+    'language_primary' => 'vi',
 
     /*
     |--------------------------------------------------------------------------

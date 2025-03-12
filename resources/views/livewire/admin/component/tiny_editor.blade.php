@@ -97,7 +97,6 @@
 </div>
 <script>
     function uploadFile(blobInfo,success,failure){
-        console.log(blobInfo)
         let formData = new FormData();
         formData.append("file", blobInfo.blob()); // File
         formData.append("directory", "attachments"); // Thư mục lưu trữ

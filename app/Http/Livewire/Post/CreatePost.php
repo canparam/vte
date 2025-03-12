@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Post;
 
 use App\Services\PostService;
+use App\Traits\Seo;
 use App\Traits\ToastifyTrait;
 use Artesaos\SEOTools\Traits\SEOTools;
 use Illuminate\Support\Facades\Storage;
@@ -14,14 +15,12 @@ class CreatePost extends Component
     use ToastifyTrait;
     use WithFileUploads;
     use SEOTools;
-    public $post = [
-      'title' => '',
-      'content' => '',
-    ];
-    public $seo = [
-      'title' => '',
-      'description' => '',
-    ];
+    use Seo;
+
+    public $title = [];
+    public $content = [];
+
+
     public $thumbnail;
     public function render()
     {
