@@ -14,7 +14,7 @@
     <link href="{{asset('assets/switcher/css/switcher.css')}}" rel="stylesheet">
     <link href="{{asset('assets/switcher/demo.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <meta name="csrf_token" content="{{ csrf_token() }}" />
 
     @livewireStyles

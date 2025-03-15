@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Post;
+namespace App\Http\Livewire\Page;
 
 use App\Services\PostService;
 use App\Traits\Seo;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class CreatePost extends Component
+class CreatePage extends Component
 {
     use ToastifyTrait;
     use WithFileUploads;
@@ -21,9 +21,6 @@ class CreatePost extends Component
 
     public $data = [];
     public $form = [];
-    public $postCate = [];
-    public $categories = [];
-
     public $thumbnail;
 
 
@@ -47,18 +44,13 @@ class CreatePost extends Component
         foreach ($langs as $k => $lang) {
             $this->data['content'][$k] = '';
         }
-        $this->categories = $postService
-            ->postRepository
-            ->categories()
-            ->with(['primary'])
-            ->orderBy('created_at','desc')
-            ->get();
+
     }
 
     public function render()
     {
-        $this->seo()->setTitle("Thêm bài viết");
-        return view('livewire.admin.post.create');
+        $this->seo()->setTitle("Thêm trang");
+        return view('livewire.admin.page.create');
     }
 
     public function create(PostService $postService)
@@ -70,8 +62,8 @@ class CreatePost extends Component
         if ($this->thumbnail) {
             $thumb = $this->thumbnail->store('post', 'public');
         }
-        $postService->createPost($this->data,$thumb, $this->postCate);
+        $postService->createPage($this->data,$thumb);
         $this->toast("Đăng thành công");
-        $this->redirectRoute('admin.posts');
+        $this->redirectRoute('admin.pages');
     }
 }

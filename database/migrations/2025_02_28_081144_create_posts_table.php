@@ -15,18 +15,8 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title',500)->index()->nullable();
-            $table->text('content')->nullable();
-            $table->string('thumb')->nullable();
-            $table->string('type')->nullable();
-            $table->json('extra')->nullable();
-            $table->bigInteger('views')->default(0);
-            $table->json('categories')->nullable();
-            $table->json('tags')->nullable();
-            $table->text('short_des')->nullable();
-            $table->string('slug',500)->index();
-            $table->unsignedBigInteger('user_id')->index()->nullable();
-            $table->json('seo')->nullable();
+            $table->string('type')->index();
+            $table->unsignedBigInteger('author_id')->nullable()->index();
             $table->softDeletes();
             $table->timestamps();
         });

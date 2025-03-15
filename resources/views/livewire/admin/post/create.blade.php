@@ -13,28 +13,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <x-form.text-input label="Tiêu đề" model="title"/>
-{{--                        <div class="form-group">--}}
-{{--                            <label class="form-label" for="title">Tiêu đề</label>--}}
-{{--                            <input type="text" wire:model.defer="post.title"--}}
-{{--                                   class="form-control  @error('post.title') is-invalid @enderror" id="title">--}}
-{{--                        </div>--}}
-
-                        <x-tiny-editor label="Nội dung" model="post.content"/>
-                        <div class="card border">
-                            <div class="card-header p-2">
-                                <h5 class="card-title">SEO</h5>
-                            </div>
-                            <div class="card-body px-0">
-                                <x-form.text-input label="Meta Title" model="seoTitle"/>
-
-                                <div class="form-group">
-                                    <label class="form-label" for="metaDes">Meta Description</label>
-                                    <textarea class="form-control" wire:model.defer="seo.description" autocomplete="off"
-                                              id="metaDes" rows="3" placeholder="Meta Description"></textarea>
-                                </div>
-                            </div>
-                        </div>
+                        <x-form.form model="form_create" :fields="$form"/>
                     </div>
                 </div>
             </div>
@@ -42,6 +21,20 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row mb-5">
+                            <div class="col-12">
+                                <label class="form-label">Danh mục</label>
+                                <div class="custom-controls-stacked" style="height: 200px; overflow-y:scroll">
+                                    @foreach($categories as $cate)
+                                        <label class="custom-control custom-checkbox">
+                                            <input type="checkbox" wire:model.defer="postCate" class="custom-control-input" name="example-checkbox1"
+                                                   value="{{$cate->id}}">
+                                            <span class="custom-control-label">{{$cate->primary->title}}</span>
+                                        </label>
+                                    @endforeach
+
+
+                                </div>
+                            </div>
                             <div class="col-12">
                                 <label class="form-label">Ảnh thumbnail</label>
                                 <div class="dropify-wrapper">

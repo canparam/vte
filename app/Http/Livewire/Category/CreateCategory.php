@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Post;
+namespace App\Http\Livewire\Category;
 
 use App\Services\PostService;
 use App\Traits\Seo;
@@ -8,11 +8,10 @@ use App\Traits\ToastifyTrait;
 use App\View\Components\Form\TextInput;
 use App\View\Components\TinyEditor;
 use Artesaos\SEOTools\Traits\SEOTools;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class CreatePost extends Component
+class CreateCategory extends Component
 {
     use ToastifyTrait;
     use WithFileUploads;
@@ -21,44 +20,26 @@ class CreatePost extends Component
 
     public $data = [];
     public $form = [];
-    public $postCate = [];
-    public $categories = [];
 
     public $thumbnail;
 
-
-    public function mount(PostService  $postService)
+    public function mount()
     {
         $this->form = [
             'data.title' => [
                 'type' => TextInput::class,
                 'label' => 'Tiêu đề'
             ],
-            'data.content' => [
-                'type' => TinyEditor::class,
-                'label' => 'Nội dung'
-            ],
             'data.seo' => [
                 'type' => \App\View\Components\SEO::class,
             ]
         ];
-        //init content for tiny editor if null
-        $langs = config('app.languages');
-        foreach ($langs as $k => $lang) {
-            $this->data['content'][$k] = '';
-        }
-        $this->categories = $postService
-            ->postRepository
-            ->categories()
-            ->with(['primary'])
-            ->orderBy('created_at','desc')
-            ->get();
     }
 
     public function render()
     {
-        $this->seo()->setTitle("Thêm bài viết");
-        return view('livewire.admin.post.create');
+        $this->seo()->setTitle("Thêm danh mục");
+        return view('livewire.admin.category.create');
     }
 
     public function create(PostService $postService)
@@ -70,8 +51,8 @@ class CreatePost extends Component
         if ($this->thumbnail) {
             $thumb = $this->thumbnail->store('post', 'public');
         }
-        $postService->createPost($this->data,$thumb, $this->postCate);
-        $this->toast("Đăng thành công");
-        $this->redirectRoute('admin.posts');
+        $postService->createCategory($this->data,$thumb);
+        $this->toast("Tạo thành công");
+        $this->redirectRoute('admin.categories');
     }
 }

@@ -1,9 +1,9 @@
 <div>
     <div class="page-header">
-        <h1 class="page-title">Danh sách bài viết</h1>
+        <h1 class="page-title">Danh sách trang</h1>
         <div>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Bài viết</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Trang</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Danh sách</a></li>
             </ol>
         </div>
@@ -17,7 +17,7 @@
                         <div id="basic-datatable_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
-                                    <a  href="{{route('admin.posts.create')}}" class="btn btn-primary">
+                                    <a  href="{{route('admin.pages.create')}}" class="btn btn-primary">
                                         <i class="fe fe-plus me-2"></i>Thêm
                                     </a>
                                 </div>
@@ -53,7 +53,7 @@
                                                 <td class="sorting_1">{{$post->created_at}}</td>
                                                 <td class="sorting_1">
                                                     <div class="btn-list">
-                                                        <a href="{{route('admin.posts.edit',['id' => $post->id])}}"
+                                                        <a href="{{route('admin.pages.edit',['id' => $post->id])}}"
                                                            class="btn btn-sm btn-primary">
                                                             <span class="fe fe-edit"> </span>
                                                         </a>

@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        require_once(app_path() . '/Helper/helpers.php');
         $this->app->singleton('cnv.menu.factory', function ($app) {
             return new MenuFactory();
         });

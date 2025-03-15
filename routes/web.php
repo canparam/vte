@@ -3,9 +3,17 @@
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Livewire\AdminIndex;
 use App\Http\Livewire\Auth\Login;
-use App\Http\Livewire\Post\CreatePost;
-use App\Http\Livewire\Post\EditPost;
+
+use App\Http\Livewire\Category\CreateCategory;
+use App\Http\Livewire\Category\EditCategory;
+use App\Http\Livewire\CategoryList;
+
+use App\Http\Livewire\Page\CreatePage;
+use App\Http\Livewire\PageList;
+use App\Http\Livewire\Page\EditPage;
+
 use App\Http\Livewire\PostList;
+
 use App\Http\Livewire\System\Setting;
 use App\Http\Livewire\System\User;
 use Illuminate\Support\Facades\Route;
@@ -39,14 +47,20 @@ Route::prefix('admin')->group(function () {
         Route::get('/', AdminIndex::class)->name('admin.index');
 
         Route::prefix('posts')->group(function () {
-
             Route::get('/',PostList::class)->name('admin.posts');
-            Route::get('/create',CreatePost::class)->name('admin.posts.create');
-            Route::get('/{id}/edit',EditPost::class)->name('admin.posts.edit');
-
-
+            Route::get('/create',\App\Http\Livewire\Post\CreatePost::class)->name('admin.posts.create');
+            Route::get('/{id}/edit',\App\Http\Livewire\Post\EditPost::class)->name('admin.posts.edit');
         });
-
+        Route::prefix('categories')->group(function () {
+            Route::get('/',CategoryList::class)->name('admin.categories');
+            Route::get('/create',CreateCategory::class)->name('admin.categories.create');
+            Route::get('/{id}/edit',EditCategory::class)->name('admin.categories.edit');
+        });
+        Route::prefix('pages')->group(function () {
+            Route::get('/',PageList::class)->name('admin.pages');
+            Route::get('/create',CreatePage::class)->name('admin.pages.create');
+            Route::get('/{id}/edit',EditPage::class)->name('admin.pages.edit');
+        });
         Route::prefix('system')->group(function () {
             Route::get('users',User::class)->name('admin.system.users');
             Route::get('users/create',User\CreateUser::class)->name('admin.system.users.create');

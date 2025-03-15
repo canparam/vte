@@ -8,7 +8,7 @@ use Artesaos\SEOTools\Traits\SEOTools;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class PostList extends Component
+class PageList extends Component
 {
     use WithPagination;
     use SEOTools;
@@ -16,22 +16,20 @@ class PostList extends Component
     public $title;
     public function render(PostService  $postService)
     {
-        $this->seo()->setTitle("Danh sách bài viết");
-        $list = $postService->getListPost($this->title);
-        return view('livewire.admin.post.list',[
+        $this->seo()->setTitle("Danh sách trang");
+        $list = $postService->getListPage($this->title);
+        return view('livewire.admin.page.list',[
             'list' => $list
         ]);
     }
     public function delete($id, PostService  $postService)
     {
-        $post = $postService->postRepository->findPostById($id);
+        $post = $postService->postRepository->findPageById($id);
         if (empty($post)){
-            $this->toast("Không tìm thấy bài viết");
+            $this->toast("Không tìm thấy trang");
             return;
         }
-        $postService->postRepository->remove($post,function ($post){
-            $post->categories()->detach();
-        });
+        $postService->postRepository->remove($post);
         $this->toast("Xóa thành công");
 
     }

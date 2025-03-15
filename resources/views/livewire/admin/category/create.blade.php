@@ -1,14 +1,14 @@
 <div>
     <div class="page-header">
-        <h1 class="page-title">Sửa bài viết</h1>
+        <h1 class="page-title">Thêm danh mục</h1>
         <div>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('admin.system.users')}}">Bài viết</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Sửa</li>
+                <li class="breadcrumb-item"><a href="{{route('admin.categories')}}">Danh mục</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Thêm</li>
             </ol>
         </div>
     </div>
-    <form class="form-horizontal" wire:submit.prevent="save">
+    <form class="form-horizontal" wire:submit.prevent="create">
         <div class="row">
             <div class="col-md-8">
                 <div class="card">
@@ -21,22 +21,6 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row mb-5">
-                            <div class="col-12">
-                                <label class="form-label">Danh mục</label>
-                                <div class="custom-controls-stacked" style="height: 200px; overflow-y:scroll">
-                                    @foreach($categories as $cate)
-                                        <label class="custom-control custom-checkbox">
-                                            <input type="checkbox"
-                                                   {{in_array($cate->id,$postCate) ? 'checked' : '' }}
-                                                   wire:model.defer="postCate" class="custom-control-input" name="example-checkbox1"
-                                                   value="{{$cate->id}}">
-                                            <span class="custom-control-label">{{$cate->primary->title}}</span>
-                                        </label>
-                                    @endforeach
-
-
-                                </div>
-                            </div>
                             <div class="col-12">
                                 <label class="form-label">Ảnh thumbnail</label>
                                 <div class="dropify-wrapper">
@@ -55,11 +39,7 @@
                                         <button type="button" class="dropify-clear">Remove</button>
                                         <div class="dropify-preview" style="display: block;">
                                         <span class="dropify-render">
-                                            @if(is_string($thumbnail))
-                                                <img src="{{ Storage::url($thumbnail) }}">
-                                            @else
-                                                <img src="{{ $thumbnail->temporaryUrl() }}">
-                                            @endif
+                                             <img src="{{ $thumbnail->temporaryUrl() }}">
                                         </span>
                                             <div class="dropify-infos">
                                                 <div class="dropify-infos-inner">
@@ -79,7 +59,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <x-button-primary label="Sửa" wire:loading.attr="disabled"/>
+                                <x-button-primary label="Thêm" wire:loading.attr="disabled"/>
                             </div>
                         </div>
                     </div>

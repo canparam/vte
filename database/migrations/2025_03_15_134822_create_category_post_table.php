@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTagsTable extends Migration
+class CreateCategoryPostTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
-            $table->id();
-            $table->string('title',500)->nullable();
-            $table->string('slug',500)->nullable();
-            $table->text('content')->nullable();
-            $table->timestamps();
+        Schema::create('category_post', function (Blueprint $table) {
+            $table->unsignedBigInteger('category_id')->index();
+            $table->unsignedBigInteger('post_id')->index();
         });
     }
 
@@ -29,6 +26,6 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
+        Schema::dropIfExists('category_post');
     }
 }

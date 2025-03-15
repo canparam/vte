@@ -8,30 +8,30 @@ use Artesaos\SEOTools\Traits\SEOTools;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class PostList extends Component
+class CategoryList extends Component
 {
     use WithPagination;
     use SEOTools;
     use ToastifyTrait;
     public $title;
+
     public function render(PostService  $postService)
     {
-        $this->seo()->setTitle("Danh sách bài viết");
-        $list = $postService->getListPost($this->title);
-        return view('livewire.admin.post.list',[
-            'list' => $list
+        $this->seo()->setTitle("Danh sách danh mục");
+        $list = $postService->getListCategory($this->title);
+
+        return view('livewire.admin.category.list', [
+            'list' => $list,
         ]);
     }
     public function delete($id, PostService  $postService)
     {
-        $post = $postService->postRepository->findPostById($id);
+        $post = $postService->postRepository->findCategoryById($id);
         if (empty($post)){
             $this->toast("Không tìm thấy bài viết");
             return;
         }
-        $postService->postRepository->remove($post,function ($post){
-            $post->categories()->detach();
-        });
+        $postService->postRepository->remove($post);
         $this->toast("Xóa thành công");
 
     }

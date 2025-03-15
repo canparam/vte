@@ -1,9 +1,9 @@
 <div>
     <div class="page-header">
-        <h1 class="page-title">Danh sách bài viết</h1>
+        <h1 class="page-title">Danh sách danh mục</h1>
         <div>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Bài viết</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Danh mục</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Danh sách</a></li>
             </ol>
         </div>
@@ -17,7 +17,7 @@
                         <div id="basic-datatable_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
-                                    <a  href="{{route('admin.posts.create')}}" class="btn btn-primary">
+                                    <a  href="{{route('admin.categories.create')}}" class="btn btn-primary">
                                         <i class="fe fe-plus me-2"></i>Thêm
                                     </a>
                                 </div>
@@ -38,7 +38,6 @@
                                         <tr role="row" class="text-center">
                                             <th class="wd-15p border-bottom-0 ">ID</th>
                                             <th class="wd-15p border-bottom-0 ">Tên</th>
-                                            <th class="wd-15p border-bottom-0 ">Tác giả</th>
                                             <th class="wd-15p border-bottom-0 ">Ngày tạo</th>
                                             <th class="wd-15p border-bottom-0 ">Hành động</th>
 
@@ -49,11 +48,10 @@
                                             <tr class="odd text-center">
                                                 <td class="sorting_1">{{$post->id}}</td>
                                                 <td class="sorting_1">{{$post->primary->title}}</td>
-                                                <td class="sorting_1">{{$post->author->name}}</td>
                                                 <td class="sorting_1">{{$post->created_at}}</td>
                                                 <td class="sorting_1">
                                                     <div class="btn-list">
-                                                        <a href="{{route('admin.posts.edit',['id' => $post->id])}}"
+                                                        <a href="{{route('admin.categories.edit',['id' => $post->id])}}"
                                                            class="btn btn-sm btn-primary">
                                                             <span class="fe fe-edit"> </span>
                                                         </a>
